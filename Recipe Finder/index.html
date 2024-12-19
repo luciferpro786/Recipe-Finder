@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Finder</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Hero Section -->
+        <header class="hero">
+            <div class="hero-content">
+                <div class="logo">
+                    <i class="fas fa-utensils"></i>
+                    <h1>Recipe Finder</h1>
+                </div>
+                <p class="tagline">Discover Amazing Recipes</p>
+                
+                <!-- Main Search Box -->
+                <div class="search-container">
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="Search recipes, ingredients, or cuisines...">
+                        <button id="searchBtn"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Filter Section -->
+        <section class="filters">
+            <div class="filter-container">
+                <div class="filter-group">
+                    <label><i class="fas fa-globe"></i> Cuisine</label>
+                    <select id="cuisineFilter">
+                        <option value="">All Cuisines</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label><i class="fas fa-leaf"></i> Diet</label>
+                    <select id="dietFilter">
+                        <option value="">All Diets</option>
+                        <option value="vegetarian">Vegetarian</option>
+                        <option value="vegan">Vegan</option>
+                        <option value="gluten-free">Gluten-Free</option>
+                        <option value="keto">Keto</option>
+                        <option value="paleo">Paleo</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label><i class="fas fa-clock"></i> Time</label>
+                    <select id="timeFilter">
+                        <option value="">Any Time</option>
+                        <option value="15">Under 15 mins</option>
+                        <option value="30">Under 30 mins</option>
+                        <option value="45">Under 45 mins</option>
+                        <option value="60">Under 1 hour</option>
+                    </select>
+                </div>
+            </div>
+
+            <nav class="categories">
+                <button class="category-btn active" data-category="all">
+                    <i class="fas fa-th-large"></i> All
+                </button>
+                <button class="category-btn" data-category="breakfast">
+                    <i class="fas fa-coffee"></i> Breakfast
+                </button>
+                <button class="category-btn" data-category="lunch">
+                    <i class="fas fa-hamburger"></i> Lunch
+                </button>
+                <button class="category-btn" data-category="dinner">
+                    <i class="fas fa-utensils"></i> Dinner
+                </button>
+                <button class="category-btn" data-category="dessert">
+                    <i class="fas fa-ice-cream"></i> Dessert
+                </button>
+                <button class="category-btn" data-category="snacks">
+                    <i class="fas fa-cookie"></i> Snacks
+                </button>
+            </nav>
+        </section>
+
+        <!-- Featured Collections -->
+        <section class="featured-section">
+            <h2>Popular Categories</h2>
+            <div class="featured-grid">
+                <div class="featured-card" data-category="quick">
+                    <div class="card-overlay"></div>
+                    <img src="https://source.unsplash.com/featured/?cooking,quick" alt="Quick Meals">
+                    <h3>Quick & Easy</h3>
+                </div>
+                <div class="featured-card" data-category="healthy">
+                    <div class="card-overlay"></div>
+                    <img src="https://source.unsplash.com/featured/?healthy,food" alt="Healthy">
+                    <h3>Healthy Choices</h3>
+                </div>
+                <div class="featured-card" data-category="vegetarian">
+                    <div class="card-overlay"></div>
+                    <img src="https://source.unsplash.com/featured/?vegetarian,food" alt="Vegetarian">
+                    <h3>Vegetarian</h3>
+                </div>
+                <div class="featured-card" data-category="dessert">
+                    <div class="card-overlay"></div>
+                    <img src="https://source.unsplash.com/featured/?dessert,food" alt="Desserts">
+                    <h3>Desserts</h3>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <main>
+            <div class="loading-spinner" id="loadingSpinner">
+                <div class="spinner"></div>
+                <p>Finding delicious recipes...</p>
+            </div>
+            
+            <div class="recipes-grid" id="recipesContainer"></div>
+            
+            <div class="load-more">
+                <button id="loadMoreBtn">
+                    <i class="fas fa-plus-circle"></i> Load More Recipes
+                </button>
+            </div>
+        </main>
+
+        <!-- Recipe Modal -->
+        <div id="recipeModal" class="modal">
+            <div class="modal-content" id="modalContent">
+                <span class="close">&times;</span>
+                <div class="recipe-details"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Recipe Finder</h3>
+                <p>Your personal recipe discovery platform</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#" data-category="popular">Popular Recipes</a></li>
+                    <li><a href="#" data-category="recent">Recently Added</a></li>
+                    <li><a href="#" data-category="seasonal">Seasonal Specials</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Recipe Finder. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
